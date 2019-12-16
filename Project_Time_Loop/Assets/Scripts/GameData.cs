@@ -1,49 +1,83 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GameData : MonoBehaviour
 {
     public List<Segment> segments;
 
-    [Range(3,9)]
+    [Range(3,19)]
     public int roomSize = 4;
-
-    [Range(0,10)]
-    public int maxHeightShifts = 3;
-
+    
     List<Vector3> segmentPositions;
     public static List<float> timedYPos;
-    List<float> heights;
+    List<int> timesForMovement = new List<int>();
+
+    public SaveData saveData;
     
-    void Start()
+    void Awake()
     {
+        //This destroys copies of GameData upon resetting the scene
+        if (FindObjectsOfType<GameData>().Length > 1) { Destroy(gameObject); }
         DontDestroyOnLoad(gameObject);
 
-        CreateMap();
-        CreateTimedPositionHeight();
-        timedYPos = heights;
-
-        segments = new List<Segment>();
-
-        for(int i = 0; i < roomSize * roomSize; i++)
+        if (GameManager.SaveFileCheck()&&GameManager.isLoad)
         {
-            int randValue = Random.Range(0, Mathf.FloorToInt(GameManager.resetTime));
+            string JSONSTring = File.ReadAllText(Application.persistentDataPath + "/playerSave.save");
+            saveData = JsonUtility.FromJson<SaveData>(JSONSTring);
+            Debug.Log(JSONSTring);
 
-            Segment newSegment = new Segment(segmentPositions[i], i, randValue);
-            segments.Add(newSegment);
+            // GO through EACH STRING ANd DESERIALize iT.
+            List<string> unserializedSegments = new List<string>();
+            for(int i)
+            segments = JsonUtility.FromJson<List<Segment>>(saveData.savedSegments);
+            segmentPositions = saveData.savedSegmentPositions;
+            timedYPos = saveData.savedYPositions;
+            timesForMovement = saveData.savedMovementTimes;
+
+            GameManager.isLoad = false;
+            Debug.Log("This stuff happened");
+            Debug.Log(segments);
+
+        }
+        else
+        {
+            CreateMap();
+            CreateTimedPositionHeight();
+
+            segments = new List<Segment>();
+            List<string> serializedSegments = new List<string>();
+
+            for (int i = 0; i < roomSize * roomSize; i++)
+            {
+                int randValue = Random.Range(0, Mathf.FloorToInt(GameManager.resetTime));
+                timesForMovement.Add(randValue);
+
+                Segment newSegment = new Segment(segmentPositions[i], i, randValue);
+                segments.Add(newSegment);
+                serializedSegments[i] = JsonUtility.ToJson(newSegment);
+            }
+            
+            SaveData currentSave = new SaveData();
+            currentSave.savedSegments = serializedSegments;
+            currentSave.savedSegmentPositions = segmentPositions;
+            currentSave.savedYPositions = timedYPos;
+            currentSave.savedMovementTimes = timesForMovement;
+            saveData = currentSave;
+            Debug.Log(currentSave.savedSegments);
         }
 
-        FindObjectOfType<RoomMaker>().MakeRoom();
+        SceneLoadScript.LoadMain();
     }  
 
     void CreateTimedPositionHeight()
     {
-        heights = new List<float>();
+        timedYPos = new List<float>();
         for(int i = 0; i<GameManager.resetTime; i++)
         {
             float randHeight = Random.Range(-9f, 10f);
-            heights.Add(randHeight);
+            timedYPos.Add(randHeight);
         }
     }
 
@@ -63,8 +97,10 @@ public class GameData : MonoBehaviour
     
 }
 
-struct SaveData
+public struct SaveData
 {
-    List<Segment> savedSegments;
-    
+    public List<string> savedSegments;
+    public List<Vector3> savedSegmentPositions;
+    public List<float> savedYPositions;
+    public List<int> savedMovementTimes;    
 }

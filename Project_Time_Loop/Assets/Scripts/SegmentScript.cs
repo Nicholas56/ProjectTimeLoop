@@ -9,40 +9,39 @@ public class SegmentScript : MonoBehaviour
 
     [Range(0, 5)]
     public int timeBeforeMove = 1;
-    List<int> times = new List<int>();
+    public int timeToMove;
+    float segmentMovementTime = 5f;
 
     private void Start()
     {
-
+        timeToMove = segmentData.posAtTime;
     }
 
     private void Update()
     {
         if (segmentData.willMove)
         {
-            foreach(int check in times)
+            if (Mathf.FloorToInt(GameManager.gameTimer)>timeToMove-timeBeforeMove&& Mathf.FloorToInt(GameManager.gameTimer) < timeToMove)
             {
-                if(Mathf.FloorToInt(GameManager.gameTimer)>check-timeBeforeMove&& Mathf.FloorToInt(GameManager.gameTimer) < check)
-                {
-                    gameObject.GetComponent<Renderer>().material = segmentMaterials[1];
-                }
-                else if(Mathf.FloorToInt(GameManager.gameTimer) == check)
-                {
-                    gameObject.GetComponent<Renderer>().material = segmentMaterials[2];
-                    segmentData.willMove = false;
-                    Invoke("MoveTo", 1);
-                }
-                else
-                {
-                    gameObject.GetComponent<Renderer>().material = segmentMaterials[0];
-                }
+                gameObject.GetComponent<Renderer>().material = segmentMaterials[1];
             }
-        }
+            else if(Mathf.FloorToInt(GameManager.gameTimer)>= timeToMove&& Mathf.FloorToInt(GameManager.gameTimer) < timeToMove + segmentMovementTime)
+            {
+                gameObject.GetComponent<Renderer>().material = segmentMaterials[2];
+                transform.position = Vector3.Slerp(transform.position, new Vector3(transform.position.x, GameData.timedYPos[segmentData.posAtTime], transform.position.z), Time.deltaTime);
+            }
+            else
+            {
+                gameObject.GetComponent<Renderer>().material = segmentMaterials[0];
+            }
+        }        
     }
 
     void MoveTo()
     {
-        transform.Translate(new Vector3(0,GameData.timedYPos[segmentData.posAtTime], 0));
+        Vector3 currentPos = transform.position;
+        transform.position = Vector3.Slerp(currentPos, new Vector3(transform.position.x, GameData.timedYPos[segmentData.posAtTime], transform.position.z), 10);
+        //transform.Translate(new Vector3(0,GameData.timedYPos[segmentData.posAtTime], 0));
 
         segmentData.willMove = true;
     }

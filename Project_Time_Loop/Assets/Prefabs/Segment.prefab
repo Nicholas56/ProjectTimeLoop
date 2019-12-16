@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1687708702678730599}
   m_Layer: 0
   m_Name: Segment
-  m_TagString: Untagged
+  m_TagString: Segment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,4 +109,5 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d83eda1f4f3f4b04f98717297b2f71db, type: 2}
   - {fileID: 2100000, guid: ff4fb7e471a980449b4d51238b374469, type: 2}
   - {fileID: 2100000, guid: 49af3f6e3f09b74489e2e92cac9f31b8, type: 2}
-  timeBeforeMove: 5
+  timeBeforeMove: 2
+  timeToMove: 0
