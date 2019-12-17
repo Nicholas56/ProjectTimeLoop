@@ -8,11 +8,15 @@ public class Segment
     public int segmentID;
     public bool willMove = true;
     public int posAtTime;
+    public List<float> timesForMoving;
+    public bool featureHold;
 
-    public Segment(Vector3 newPos, int newID, int timedPos)
+    public Segment(Vector3 newPos, int newID, int timedPos, List<float> listOfTimes, bool haveFeature)
     {
         pos = newPos;
         segmentID = newID;
         posAtTime = timedPos;
+        timesForMoving = listOfTimes;
+        featureHold = haveFeature;
     }
 }

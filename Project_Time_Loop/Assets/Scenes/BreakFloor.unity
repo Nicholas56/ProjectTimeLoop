@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 363528853}
   - component: {fileID: 363528852}
   m_Layer: 5
-  m_Name: LoadGame
+  m_Name: GoToMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1144933989}
-        m_MethodName: LoadSave
+        m_MethodName: ReturnToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -621,7 +621,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1144933990}
   - component: {fileID: 1144933989}
-  - component: {fileID: 1144933991}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -641,6 +640,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 305cea1565dc93548a2b4865678d8306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  segmentPrefab: {fileID: 1973510747641102189, guid: 22669391d4fbb3e42a73c21d63c6669c,
+    type: 3}
+  playerPrefab: {fileID: 7027821098344488809, guid: a1c90b5af4585d6489a635113fb5e15d,
+    type: 3}
 --- !u!4 &1144933990
 Transform:
   m_ObjectHideFlags: 0
@@ -656,22 +659,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1144933991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144933988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d035a741f8386a74cbd85832af0f9f71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  segmentPrefab: {fileID: 1973510747641102189, guid: 22669391d4fbb3e42a73c21d63c6669c,
-    type: 3}
-  playerPrefab: {fileID: 7027821098344488809, guid: a1c90b5af4585d6489a635113fb5e15d,
-    type: 3}
 --- !u!1 &1301240827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1065,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Load Game
+  m_text: Return To Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1147,10 +1134,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2135978708}
-    characterCount: 9
+    characterCount: 14
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1

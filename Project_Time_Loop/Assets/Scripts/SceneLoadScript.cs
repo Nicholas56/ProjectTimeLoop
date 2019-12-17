@@ -8,7 +8,8 @@ public class SceneLoadScript : MonoBehaviour
 
     public void  NewGame()
     {
-        SceneManager.LoadScene("MakeData");
+        SceneManager.LoadScene("Buffer");
+        //SceneManager.LoadScene("MakeData");
     }
 
     public void LoadGame()

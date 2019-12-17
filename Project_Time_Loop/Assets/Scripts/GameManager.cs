@@ -7,6 +7,9 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     GameData data;
+    public GameObject segmentPrefab;
+    public GameObject playerPrefab;
+    public GameObject featurePrefab;
     public static bool isLoad;
 
     //The timer will be used to tell the rest of the game what time it is
@@ -22,13 +25,14 @@ public class GameManager : MonoBehaviour
         Invoke("ResetTime", resetTime);
         data = FindObjectOfType<GameData>();
         Debug.Log("GameManager started");
-        Invoke("CallRoomMaker", 0.5f);
+        gameObject.AddComponent<RoomMaker>();
+        CallRoomMaker();
     }
 
     void CallRoomMaker()
     {
         Debug.Log("call room maker");
-        GetComponent<RoomMaker>().MakeRoom();
+        GetComponent<RoomMaker>().MakeRoom(segmentPrefab,playerPrefab,data.segments);
     }
 
     private void Update()
@@ -63,14 +67,9 @@ public class GameManager : MonoBehaviour
         Debug.Log(save.savedSegments);
     }
 
-    public void LoadSave()
+    public void ReturnToMenu()
     {
-        if (SaveFileCheck())
-        {
-            isLoad = true;
-
-            Destroy(FindObjectOfType<GameData>().gameObject);
-            FindObjectOfType<SceneLoadScript>().LoadGame();
-        }
+        Destroy(FindObjectOfType<GameData>().gameObject);
+        SceneLoadScript.LoadMenu();
     }
 }

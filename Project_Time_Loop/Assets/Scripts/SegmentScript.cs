@@ -28,7 +28,7 @@ public class SegmentScript : MonoBehaviour
             else if(Mathf.FloorToInt(GameManager.gameTimer)>= timeToMove&& Mathf.FloorToInt(GameManager.gameTimer) < timeToMove + segmentMovementTime)
             {
                 gameObject.GetComponent<Renderer>().material = segmentMaterials[2];
-                transform.position = Vector3.Slerp(transform.position, new Vector3(transform.position.x, GameData.timedYPos[segmentData.posAtTime], transform.position.z), Time.deltaTime);
+                transform.position = Vector3.Slerp(transform.position, new Vector3(transform.position.x, segmentData.timesForMoving[segmentData.posAtTime], transform.position.z), Time.deltaTime);
             }
             else
             {
@@ -40,8 +40,7 @@ public class SegmentScript : MonoBehaviour
     void MoveTo()
     {
         Vector3 currentPos = transform.position;
-        transform.position = Vector3.Slerp(currentPos, new Vector3(transform.position.x, GameData.timedYPos[segmentData.posAtTime], transform.position.z), 10);
-        //transform.Translate(new Vector3(0,GameData.timedYPos[segmentData.posAtTime], 0));
+        transform.position = Vector3.Slerp(currentPos, new Vector3(transform.position.x, segmentData.timesForMoving[segmentData.posAtTime], transform.position.z), 10);
 
         segmentData.willMove = true;
     }

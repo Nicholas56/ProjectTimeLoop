@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MakeData.unity
     guid: f2e365b39a641714ab5ba5bbde9ca6b2
+  - enabled: 1
+    path: Assets/Scenes/Buffer.unity
+    guid: 5e5a1a1bcd634df4d90c9da90c616c64
   m_configObjects: {}

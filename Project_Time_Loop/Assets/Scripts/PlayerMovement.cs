@@ -40,12 +40,13 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             yVelocity -= gravity;
+            Mathf.Clamp(yVelocity, -20f, 100f);
         }
         velocity.y = yVelocity;
 
         velocity = transform.TransformDirection(velocity);
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift)&&charController.isGrounded)
         {
             charController.Move(velocity * Time.deltaTime * 4);
         }
