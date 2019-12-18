@@ -15,7 +15,7 @@ public class FeatureScript : MonoBehaviour
     public void Effect()
     {
         GetComponent<Light>().color = Color.red;
-        GetComponent<Light>().intensity = 150f;
+        GetComponent<Light>().intensity = 10f;
     }
 
 }

@@ -51,6 +51,7 @@ public class GameData : MonoBehaviour
             segmentPositions = saveData.savedSegmentPositions;
             timedYPos = saveData.savedYPositions;
             timesForMovement = saveData.savedMovementTimes;
+            holdingFeature = saveData.savedFeaturePlacements;
 
             GameManager.isLoad = false;
             Debug.Log("This stuff happened");
@@ -71,7 +72,7 @@ public class GameData : MonoBehaviour
                 int randValue = Random.Range(0, Mathf.FloorToInt(GameManager.resetTime));
                 timesForMovement.Add(randValue);
 
-                Segment newSegment = new Segment(segmentPositions[i], i, randValue, timedYPos);
+                Segment newSegment = new Segment(segmentPositions[i], i, randValue, timedYPos, holdingFeature[i]);
                 segments.Add(newSegment);
                 serializedSegments.Add(JsonUtility.ToJson(newSegment));
             }
@@ -82,6 +83,7 @@ public class GameData : MonoBehaviour
             currentSave.savedYPositions = timedYPos;
             currentSave.savedMovementTimes = timesForMovement;
             currentSave.sizeOfRoom = roomSize;
+            currentSave.savedFeaturePlacements = holdingFeature;
             saveData = currentSave;
             Debug.Log("New data is being created!");
         }
@@ -116,10 +118,15 @@ public class GameData : MonoBehaviour
     void CreateFeature()
     {
         holdingFeature = new List<bool>();
+        for(int j = 0; j < roomSize * roomSize; j++) { holdingFeature.Add(false); }
         for(int i= 0; i < roomSize * roomSize; i++)
         {
-            //Randomised list of feature holding positions in the segments.
+            int randNum = Random.Range(i, roomSize * roomSize);
+            holdingFeature[randNum] = true;
+            numOfFeatures--;
+            if (numOfFeatures == 0) { return; }
         }
+        if (numOfFeatures > 0) { print("Not every feature has been assigned"); }
     }
     
 }
@@ -130,6 +137,7 @@ public struct SaveData
     public List<Vector3> savedSegmentPositions;
     public List<float> savedYPositions;
     public List<int> savedMovementTimes;
+    public List<bool> savedFeaturePlacements;
 
     public int sizeOfRoom;
 }

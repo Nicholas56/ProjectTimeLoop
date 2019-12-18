@@ -8,7 +8,8 @@ public class LookX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -17,6 +18,8 @@ public class LookX : MonoBehaviour
         if (!OptionScript.isPaused)
         {
             transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivity, 0);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }

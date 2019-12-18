@@ -22,7 +22,11 @@ public class OptionScript : MonoBehaviour
             isPaused = true;
             Time.timeScale = 0;
             pausePanel.SetActive(true);
-        }else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
             isPaused = false;
             Time.timeScale = 1;

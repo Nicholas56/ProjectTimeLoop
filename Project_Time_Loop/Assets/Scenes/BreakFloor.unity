@@ -640,9 +640,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 305cea1565dc93548a2b4865678d8306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentPrefab: {fileID: 1973510747641102189, guid: 22669391d4fbb3e42a73c21d63c6669c,
+  segmentPrefab: {fileID: 525038157640135820, guid: 508400bf02a48254cafbd10fd6b49014,
     type: 3}
   playerPrefab: {fileID: 7027821098344488809, guid: a1c90b5af4585d6489a635113fb5e15d,
+    type: 3}
+  featurePrefab: {fileID: 270402374718427484, guid: 79c6c32082304a84ebcf0e8a2a0b08c3,
     type: 3}
 --- !u!4 &1144933990
 Transform:
