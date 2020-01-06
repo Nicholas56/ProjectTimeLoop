@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BufferScript : MonoBehaviour
 {
@@ -10,5 +11,4 @@ public class BufferScript : MonoBehaviour
     {
         SceneManager.LoadScene("MakeData");
     }
-
 }

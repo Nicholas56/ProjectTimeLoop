@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomSize: 9
+  numOfFeatures: 10
 --- !u!4 &1479398545
 Transform:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class SegmentScript : MonoBehaviour
     public int timeToMove;
     float segmentMovementTime = 5f;
 
+    //Add as later feature to record the segments next to this one
+    //public List<Segment> adjacentSegments;
+
     private void Start()
     {
         timeToMove = segmentData.posAtTime;

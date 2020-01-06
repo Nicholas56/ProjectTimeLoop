@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FeatureScript : MonoBehaviour
 {
-    public enum element { Color, Light};
+    public enum element { Light, Collectable};
     public element type;
 
     void Start()

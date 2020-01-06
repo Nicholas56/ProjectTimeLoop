@@ -7,6 +7,9 @@ public class GameData : MonoBehaviour
 {
     public List<Segment> segments;
 
+    public enum gameMode { LightGame, CollectionGame};
+    public gameMode mode;
+
     [Range(3,19)]
     public int roomSize = 4;
 
@@ -17,7 +20,7 @@ public class GameData : MonoBehaviour
     List<float> timedYPos;
     List<int> timesForMovement = new List<int>();
 
-    List<bool> holdingFeature;
+    List<Segment.featureType> holdingFeature;
 
     public SaveData saveData;
     
@@ -117,12 +120,23 @@ public class GameData : MonoBehaviour
 
     void CreateFeature()
     {
-        holdingFeature = new List<bool>();
-        for(int j = 0; j < roomSize * roomSize; j++) { holdingFeature.Add(false); }
+        holdingFeature = new List<Segment.featureType>();
+        for(int j = 0; j < roomSize * roomSize; j++) { holdingFeature.Add(Segment.featureType.None); }
         for(int i= 0; i < roomSize * roomSize; i++)
         {
             int randNum = Random.Range(i, roomSize * roomSize);
-            holdingFeature[randNum] = true;
+            switch (mode)
+            {
+                case gameMode.LightGame:
+                    if (numOfFeatures == 1) { holdingFeature[randNum] = Segment.featureType.Unlockable;break; }
+                    holdingFeature[randNum] = Segment.featureType.Light;
+
+                    break;
+                case gameMode.CollectionGame:
+                    holdingFeature[randNum] = Segment.featureType.Collectable;
+
+                    break;
+            }
             numOfFeatures--;
             if (numOfFeatures == 0) { return; }
         }
@@ -137,7 +151,7 @@ public struct SaveData
     public List<Vector3> savedSegmentPositions;
     public List<float> savedYPositions;
     public List<int> savedMovementTimes;
-    public List<bool> savedFeaturePlacements;
+    public List<Segment.featureType> savedFeaturePlacements;
 
     public int sizeOfRoom;
 }

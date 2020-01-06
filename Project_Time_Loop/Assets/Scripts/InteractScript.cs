@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InteractScript : MonoBehaviour
 {
-    bool canInteract = false;
     Transform featureInteract;
 
     private void Start()
