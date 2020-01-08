@@ -15,6 +15,9 @@ public class GameData : MonoBehaviour
 
     [Range(0, 50)]
     public int numOfFeatures = 10;
+
+    //The min and Max heights need to be set here!!
+    //[Range(-10,)]
     
     List<Vector3> segmentPositions;
     List<float> timedYPos;
