@@ -9,15 +9,10 @@ public class GameData : MonoBehaviour
 
     public enum gameMode { LightGame, CollectionGame};
     public gameMode mode;
+       
+    public int numOfFeatures;  
 
-    [Range(3,19)]
-    public int roomSize = 4;
-
-    [Range(0, 50)]
-    public int numOfFeatures = 10;
-
-    //The min and Max heights need to be set here!!
-    //[Range(-10,)]
+    public Settings settings;
     
     List<Vector3> segmentPositions;
     List<float> timedYPos;
@@ -73,9 +68,9 @@ public class GameData : MonoBehaviour
             segments = new List<Segment>();
             List<string> serializedSegments = new List<string>();
 
-            for (int i = 0; i < roomSize * roomSize; i++)
+            for (int i = 0; i < settings.roomSize * settings.roomSize; i++)
             {
-                int randValue = Random.Range(0, Mathf.FloorToInt(GameManager.resetTime));
+                int randValue = Random.Range(settings.beginMovingTime, Mathf.FloorToInt(GameManager.resetTime));
                 timesForMovement.Add(randValue);
 
                 Segment newSegment = new Segment(segmentPositions[i], i, randValue, timedYPos, holdingFeature[i]);
@@ -88,7 +83,7 @@ public class GameData : MonoBehaviour
             currentSave.savedSegmentPositions = segmentPositions;
             currentSave.savedYPositions = timedYPos;
             currentSave.savedMovementTimes = timesForMovement;
-            currentSave.sizeOfRoom = roomSize;
+            currentSave.sizeOfRoom = settings.roomSize;
             currentSave.savedFeaturePlacements = holdingFeature;
             saveData = currentSave;
             Debug.Log("New data is being created!");
@@ -102,7 +97,7 @@ public class GameData : MonoBehaviour
         timedYPos = new List<float>();
         for(int i = 0; i<GameManager.resetTime; i++)
         {
-            float randHeight = Random.Range(-9f, 10f);
+            float randHeight = Random.Range(settings.minHeight, settings.maxHeight);
             timedYPos.Add(randHeight);
         }
     }
@@ -111,9 +106,9 @@ public class GameData : MonoBehaviour
     {
         segmentPositions = new List<Vector3>();
 
-        for(int x = 0; x < roomSize; x++)
+        for(int x = 0; x < settings.roomSize; x++)
         {
-            for (int y = 0; y < roomSize; y++)
+            for (int y = 0; y < settings.roomSize; y++)
             {
                 Vector3 pos = new Vector3(x * 5, 0, y * 5);
                 segmentPositions.Add(pos);
@@ -123,11 +118,12 @@ public class GameData : MonoBehaviour
 
     void CreateFeature()
     {
+        numOfFeatures = settings.numOfFeatures;
         holdingFeature = new List<Segment.featureType>();
-        for(int j = 0; j < roomSize * roomSize; j++) { holdingFeature.Add(Segment.featureType.None); }
-        for(int i= 0; i < roomSize * roomSize; i++)
+        for(int j = 0; j < settings.roomSize * settings.roomSize; j++) { holdingFeature.Add(Segment.featureType.None); }
+        for(int i= 0; i < settings.roomSize * settings.roomSize; i++)
         {
-            int randNum = Random.Range(i, roomSize * roomSize);
+            int randNum = Random.Range(i, settings.roomSize * settings.roomSize);
             switch (mode)
             {
                 case gameMode.LightGame:

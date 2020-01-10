@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 382213917405079482}
   - component: {fileID: 7766429287006554816}
+  - component: {fileID: 6838107200799125960}
   m_Layer: 0
   m_Name: PortalPad
   m_TagString: Untagged
@@ -133,6 +134,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &6838107200799125960
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3681336799498933673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5, z: 0.19}
+  m_Center: {x: 0, y: 0, z: -0.86}
 --- !u!1 &5347712484420641371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,7 +1101,7 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: 0.4}
+    m_Position: {x: 0, y: 0, z: 0.14}
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
@@ -1168,7 +1182,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.5
+      value: 0.2
       mode: 0
       spread: 0
       speed:

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject segmentPrefab;
     public GameObject playerPrefab;
     public GameObject featurePrefab;
+    public GameObject wallPrefab;
     public static bool isLoad;
 
     //The timer will be used to tell the rest of the game what time it is
@@ -19,12 +20,19 @@ public class GameManager : MonoBehaviour
     [Range(10f, 300f)]
     public static float resetTime = 90f;
 
+    AudioSource sound;
+
     void Start()
     {
         //Calls the reset time function after the given time
         Invoke("ResetTime", resetTime);
         data = FindObjectOfType<GameData>();
         Debug.Log("GameManager started");
+        //Sound Options
+        sound = GetComponent<AudioSource>();
+        sound.volume = MenuOptions.soundVolume;
+        if (MenuOptions.soundOn) { sound.mute = false; } else { sound.mute = true; }
+
         gameObject.AddComponent<RoomMaker>();
         CallRoomMaker();
     }
@@ -32,21 +40,26 @@ public class GameManager : MonoBehaviour
     void CallRoomMaker()
     {
         Debug.Log("call room maker");
-        GetComponent<RoomMaker>().MakeRoom(segmentPrefab,playerPrefab,data.segments, featurePrefab, data.mode);
+        GetComponent<RoomMaker>().MakeRoom(segmentPrefab,playerPrefab,data.segments, featurePrefab,wallPrefab, data.mode);
     }
 
     private void Update()
     {
         //The game timer will increase with time
         gameTimer += Time.deltaTime;
+
     }
 
     public void ResetTime()
-    {
+    {        
         gameTimer = 0;
+        FallDeath death = FindObjectOfType<FallDeath>();
+        death.fell = true;
         //The scene will be reloaded to reset
-        SceneManager.LoadScene(0);
+        Invoke("ReloadScene", 0.5f);
     }
+
+    void ReloadScene() { SceneManager.LoadScene(0); }
 
     public static bool SaveFileCheck()
     {

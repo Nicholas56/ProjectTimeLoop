@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FallDeath : MonoBehaviour
 {
     public Image whiteScreen;
-    bool fell = false;
+    public bool fell = false;
     float colorTime;
 
     private void OnTriggerEnter(Collider other)

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadScript : MonoBehaviour
 {
-
+    
     public void  NewGame()
     {
         SceneManager.LoadScene("Buffer");
@@ -34,4 +34,10 @@ public class SceneLoadScript : MonoBehaviour
     {
         SceneManager.LoadScene("BreakFloor",LoadSceneMode.Additive);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4c9846fd870f84db9c0c9cc257b6f2, type: 3}
+  m_Name: TestGame
+  m_EditorClassIdentifier: 
+  roomSize: 9
+  numOfFeatures: 10
+  minHeight: -8
+  maxHeight: 2
+  beginMovingTime: 0
+  lightFeaturePrefab: {fileID: 0}
+  portalFeaturePrefab: {fileID: 0}
+  carryFeaturePrefab: {fileID: 0}
+  collectFeaturePrefab: {fileID: 0}
+  unlockFeaturePrefab: {fileID: 0}
+  wallPrefab: {fileID: 0}
