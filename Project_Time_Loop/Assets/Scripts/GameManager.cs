@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject featurePrefab;
     public GameObject wallPrefab;
+
     public static bool isLoad;
 
     //The timer will be used to tell the rest of the game what time it is
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameManager started");
         //Sound Options
         sound = GetComponent<AudioSource>();
-        sound.volume = MenuOptions.soundVolume;
+        sound.volume = MenuOptions.soundVolume/100f;
         if (MenuOptions.soundOn) { sound.mute = false; } else { sound.mute = true; }
 
         gameObject.AddComponent<RoomMaker>();
@@ -61,28 +62,52 @@ public class GameManager : MonoBehaviour
 
     void ReloadScene() { SceneManager.LoadScene(0); }
 
-    public static bool SaveFileCheck()
+
+    public static bool SaveFileCheck(int fileNum)
     {
-        if (File.Exists(Application.persistentDataPath + "/playerSave.save"))
+        if (fileNum >= 0)
         {
-            return true;
+            if (File.Exists(Application.persistentDataPath + "/playerSave.save" + fileNum))
+            {
+                return true;
+            }
+            else { return false; }
         }
-        else { return false; }
+        else
+        {
+            if (File.Exists(Application.persistentDataPath + "/playerSave.save"))
+            {
+                return true;
+            }
+            else { return false; }
+        }
     }
 
-     public void SaveGame()
+    public void SaveGame()
+    {
+        SaveData save = data.saveData;
+        string JSONString = JsonUtility.ToJson(save);
+        //Quicksave file
+        File.WriteAllText(Application.persistentDataPath + "/playerSave.save", JSONString);
+        Debug.Log("Something happened");
+        Debug.Log(save.savedSegments);
+    }
+
+    public void SaveGame(int saveFileNumber)
     {
         SaveData save = data.saveData;
         string JSONString = JsonUtility.ToJson(save);
 
-        File.WriteAllText(Application.persistentDataPath + "/playerSave.save", JSONString);
+        File.WriteAllText(Application.persistentDataPath + "/playerSave.save" + saveFileNumber, JSONString);
         Debug.Log("Something happened");
         Debug.Log(save.savedSegments);
     }
 
     public void ReturnToMenu()
     {
+        SaveGame();
         Destroy(FindObjectOfType<GameData>().gameObject);
+        Time.timeScale = 1f;
         SceneLoadScript.LoadMenu();
     }
 }

@@ -6,11 +6,20 @@ public class MenuOptions : MonoBehaviour
 {
     public GameObject controlsPanel;
     public GameObject optionsPanel;
+    public GameObject loadPanel;
     public GameObject customizePanel;
     public GameObject achievementPanel;
 
+    public GameObject SavePanel;
+
     public static bool soundOn = true;
     public static int soundVolume = 70;
+
+    public void OpenLoadPanel()
+    {
+        SetFalse();
+        loadPanel.GetComponent<Animator>().SetBool("OpenLoad", true);
+    }
 
     public void OpenOptionsPanel()
     {
@@ -38,10 +47,16 @@ public class MenuOptions : MonoBehaviour
 
     void SetFalse()
     {
+        loadPanel.GetComponent<Animator>().SetBool("OpenLoad", false);
         optionsPanel.GetComponent<Animator>().SetBool("OpenOptions", false);
         controlsPanel.GetComponent<Animator>().SetBool("OpenControls", false);
         customizePanel.GetComponent<Animator>().SetBool("OpenCustomize", false);
         achievementPanel.GetComponent<Animator>().SetBool("OpenAchievement", false);
+    }
+
+    public void OpenSavePanel()
+    {
+        SavePanel.GetComponent<Animator>().SetBool("OpenSave", !SavePanel.GetComponent<Animator>().GetBool("OpenSave"));
     }
 
     public void SoundToggle()

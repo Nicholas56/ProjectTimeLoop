@@ -12,11 +12,12 @@ public class SceneLoadScript : MonoBehaviour
         //SceneManager.LoadScene("MakeData");
     }
 
-    public void LoadGame()
+    public void LoadGame(int fileNum)
     {//If there isn't a save file, this does nothing.
-        if (GameManager.SaveFileCheck())
+        if (GameManager.SaveFileCheck(fileNum))
         {
             GameManager.isLoad = true;
+            GameData.saveFileNum = fileNum;
             NewGame();
         }
         else

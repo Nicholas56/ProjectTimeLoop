@@ -20,6 +20,8 @@ public class GameData : MonoBehaviour
 
     List<Segment.featureType> holdingFeature;
 
+    public static int saveFileNum = -1;
+
     public SaveData saveData;
     
     void Awake()
@@ -28,7 +30,7 @@ public class GameData : MonoBehaviour
         if (FindObjectsOfType<GameData>().Length > 1) { Destroy(gameObject); }
         DontDestroyOnLoad(gameObject);
 
-        if (GameManager.SaveFileCheck()&&GameManager.isLoad)
+        if (GameManager.SaveFileCheck(saveFileNum)&&GameManager.isLoad)
         {
             saveData = new SaveData();
             segments = null;
@@ -36,10 +38,17 @@ public class GameData : MonoBehaviour
             timedYPos = null;
             timesForMovement = null;
 
-
-            string JSONSTring = File.ReadAllText(Application.persistentDataPath + "/playerSave.save");
-            saveData = JsonUtility.FromJson<SaveData>(JSONSTring);
-            Debug.Log(JSONSTring);
+            if (saveFileNum >= 0)
+            {
+                string JSONSTring = File.ReadAllText(Application.persistentDataPath + "/playerSave.save" + saveFileNum);
+                saveData = JsonUtility.FromJson<SaveData>(JSONSTring);
+            }
+            else
+            {
+                string JSONSTring = File.ReadAllText(Application.persistentDataPath + "/playerSave.save");
+                saveData = JsonUtility.FromJson<SaveData>(JSONSTring);
+                Debug.Log(JSONSTring);
+            }
 
             // GO through EACH STRING ANd DESERIALize iT.
             List<Segment> unserializedSegments = new List<Segment>();
@@ -77,14 +86,16 @@ public class GameData : MonoBehaviour
                 segments.Add(newSegment);
                 serializedSegments.Add(JsonUtility.ToJson(newSegment));
             }
-            
-            SaveData currentSave = new SaveData();
-            currentSave.savedSegments = serializedSegments;
-            currentSave.savedSegmentPositions = segmentPositions;
-            currentSave.savedYPositions = timedYPos;
-            currentSave.savedMovementTimes = timesForMovement;
-            currentSave.sizeOfRoom = settings.roomSize;
-            currentSave.savedFeaturePlacements = holdingFeature;
+
+            SaveData currentSave = new SaveData
+            {
+                savedSegments = serializedSegments,
+                savedSegmentPositions = segmentPositions,
+                savedYPositions = timedYPos,
+                savedMovementTimes = timesForMovement,
+                sizeOfRoom = settings.roomSize,
+                savedFeaturePlacements = holdingFeature
+            };
             saveData = currentSave;
             Debug.Log("New data is being created!");
         }
