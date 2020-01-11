@@ -40,11 +40,11 @@ public class SegmentScript : MonoBehaviour
         }        
     }
 
-    void MoveTo()
+    /*void MoveTo()
     {
         Vector3 currentPos = transform.position;
         transform.position = Vector3.Slerp(currentPos, new Vector3(transform.position.x, segmentData.timesForMoving[segmentData.posAtTime], transform.position.z), 10);
 
         segmentData.willMove = true;
-    }
+    }*/
 }

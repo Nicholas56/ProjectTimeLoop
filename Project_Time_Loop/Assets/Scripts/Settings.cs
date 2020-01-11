@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LoopData;
 
 [CreateAssetMenu()]
 public class Settings : ScriptableObject
 {
+    public enum gameMode { LightGame, CollectionGame };
+    public gameMode mode;
+
     [Range(3, 19)]
     public int roomSize;
 
@@ -27,4 +31,11 @@ public class Settings : ScriptableObject
     public GameObject unlockFeaturePrefab;
 
     public GameObject wallPrefab;
+
+    public SaveData MakeSave()
+    {
+        SaveData newSave = CreateData.CreateSaveData(roomSize, beginMovingTime, minHeight, maxHeight, numOfFeatures, mode);
+
+        return newSave;
+    }
 }
