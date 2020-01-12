@@ -9,10 +9,9 @@ public class LookY : MonoBehaviour
     public float maximumY = 30F;
     float rotationY = 0F;
 
-    // Start is called before the first frame update
-    void Start()
+    public float GetRotation()
     {
-        
+        return rotationY;
     }
 
     // Update is called once per frame

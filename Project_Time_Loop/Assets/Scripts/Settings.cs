@@ -6,7 +6,7 @@ using LoopData;
 [CreateAssetMenu()]
 public class Settings : ScriptableObject
 {
-    public enum gameMode { LightGame, CollectionGame };
+    public enum gameMode { LightGame, CollectionGame, Portal };
     public gameMode mode;
 
     [Range(3, 19)]

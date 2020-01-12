@@ -10,7 +10,7 @@ public class Segment
     public int posAtTime;
     public List<float> timesForMoving;
     //public bool featureHold;
-    public enum featureType { None, Light, Collectable, Unlockable};
+    public enum featureType { None, Light, Collectable, Unlockable, Portal, Carry};
     public featureType type;
 
     public Segment(Vector3 newPos, int newID, int timedPos, List<float> listOfTimes, featureType chosenType)

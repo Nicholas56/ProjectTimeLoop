@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     [Range(10f, 300f)]
     public static float resetTime = 90f;
 
-    AudioSource sound;
 
     void Start()
     {
@@ -29,10 +28,6 @@ public class GameManager : MonoBehaviour
         Invoke("ResetTime", resetTime);
         data = FindObjectOfType<GameData>();
         Debug.Log("GameManager started");
-        //Sound Options
-        sound = GetComponent<AudioSource>();
-        sound.volume = MenuOptions.soundVolume/100f;
-        if (MenuOptions.soundOn) { sound.mute = false; } else { sound.mute = true; }
 
         gameObject.AddComponent<RoomMaker>();
         CallRoomMaker();

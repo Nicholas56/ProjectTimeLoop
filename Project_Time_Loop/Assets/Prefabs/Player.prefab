@@ -255,6 +255,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7027821098406603570}
   - component: {fileID: 7027821098406603571}
+  - component: {fileID: 140939586435226800}
+  - component: {fileID: 8806039978035958051}
   m_Layer: 0
   m_Name: Interactor
   m_TagString: Interact
@@ -289,3 +291,33 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &140939586435226800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027821098406603581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4fb6d3f1ae056468c4bdbdccd86938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &8806039978035958051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027821098406603581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe23d20cf419b1479d0a90bce524b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivityY: 4
+  minimumY: -60
+  maximumY: 60

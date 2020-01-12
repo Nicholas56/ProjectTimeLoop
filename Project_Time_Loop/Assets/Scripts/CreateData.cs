@@ -51,6 +51,16 @@ namespace LoopData
                         holdingFeature[randNum] = Segment.featureType.Collectable;
 
                         break;
+                    case Settings.gameMode.Portal:
+                        if (numOfFeatures > 0 && numOfFeatures < 3)
+                        {
+                            holdingFeature[randNum] = Segment.featureType.Portal;
+                        }
+                        else
+                        {
+                            holdingFeature[randNum] = Segment.featureType.Carry;
+                        }
+                        break;
                 }
                 numOfFeatures--;
                 if (numOfFeatures == 0) { return holdingFeature; }
