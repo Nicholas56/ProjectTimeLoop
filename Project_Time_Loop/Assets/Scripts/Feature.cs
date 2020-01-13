@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Feature
 {
-    public enum element { Light, Collect, Unlock, Carry, Basket };
+    public enum element { None, Light, Collect, Unlock, Carry, Basket };
     public element type;
 
 

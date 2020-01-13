@@ -24,6 +24,8 @@ public class Settings : ScriptableObject
     [Range(0, 60)]
     public int beginMovingTime = 0;
 
+    public int[] specialFeatures;
+
     public GameObject lightFeaturePrefab;
     public GameObject portalFeaturePrefab;
     public GameObject carryFeaturePrefab;
@@ -34,7 +36,7 @@ public class Settings : ScriptableObject
 
     public SaveData MakeSave()
     {
-        SaveData newSave = CreateData.CreateSaveData(roomSize, beginMovingTime, minHeight, maxHeight, numOfFeatures, mode);
+        SaveData newSave = CreateData.CreateSaveData(roomSize, beginMovingTime, minHeight, maxHeight, numOfFeatures, mode, specialFeatures);
 
         return newSave;
     }

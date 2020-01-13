@@ -70,7 +70,7 @@ public struct SaveData
     public List<Vector3> savedSegmentPositions;
     public List<float> savedYPositions;
     public List<int> savedMovementTimes;
-    public List<Segment.featureType> savedFeaturePlacements;
+    public List<Feature.element> savedFeaturePlacements;
 
     public int sizeOfRoom;
 }

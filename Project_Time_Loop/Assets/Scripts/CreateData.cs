@@ -33,32 +33,32 @@ namespace LoopData
             return segmentPositions;
         }
 
-        public static List<Segment.featureType> CreateFeature(int numOfFeatures, int roomSizeSqrd, Settings.gameMode mode)
+        public static List<Feature.element> CreateFeature(int numOfFeatures, int roomSizeSqrd, Settings.gameMode mode, int[] specialFeatures)
         {
-            List<Segment.featureType> holdingFeature = new List<Segment.featureType>();
-            for (int j = 0; j < roomSizeSqrd; j++) { holdingFeature.Add(Segment.featureType.None); }
+            List<Feature.element> holdingFeature = new List<Feature.element>();
+            for (int j = 0; j < roomSizeSqrd; j++) { holdingFeature.Add(Feature.element.None); }
             for (int i = 0; i < roomSizeSqrd; i++)
             {
                 int randNum = Random.Range(i, roomSizeSqrd);
                 switch (mode)
                 {
                     case Settings.gameMode.LightGame:
-                        if (numOfFeatures == 1) { holdingFeature[randNum] = Segment.featureType.Unlockable; break; }
-                        holdingFeature[randNum] = Segment.featureType.Light;
+                        if (numOfFeatures == specialFeatures[0]) { holdingFeature[randNum] = Feature.element.Unlock; break; }
+                        holdingFeature[randNum] = Feature.element.Light;
 
                         break;
                     case Settings.gameMode.CollectionGame:
-                        holdingFeature[randNum] = Segment.featureType.Collectable;
+                        holdingFeature[randNum] = Feature.element.Collect;
 
                         break;
                     case Settings.gameMode.Portal:
-                        if (numOfFeatures > 0 && numOfFeatures < 3)
+                        if (numOfFeatures > 0 && numOfFeatures < specialFeatures[1])
                         {
-                            holdingFeature[randNum] = Segment.featureType.Portal;
+                            holdingFeature[randNum] = Feature.element.Basket;
                         }
                         else
                         {
-                            holdingFeature[randNum] = Segment.featureType.Carry;
+                            holdingFeature[randNum] = Feature.element.Carry;
                         }
                         break;
                 }
@@ -69,11 +69,11 @@ namespace LoopData
             return holdingFeature;
         }
 
-        public static SaveData CreateSaveData(int roomSize, int beginMovingTime, float minHeight, float maxHeight, int numOfFeatures, Settings.gameMode mode)
+        public static SaveData CreateSaveData(int roomSize, int beginMovingTime, float minHeight, float maxHeight, int numOfFeatures, Settings.gameMode mode, int[] featureNums)
         {
             List<Vector3> segmentPositions = CreateMap(roomSize);
             List<float> timedYPos = CreateTimedPositionHeight(minHeight, maxHeight);
-            List<Segment.featureType> holdingFeature = CreateFeature(numOfFeatures, roomSize * roomSize, mode);
+            List<Feature.element> holdingFeature = CreateFeature(numOfFeatures, roomSize * roomSize, mode, featureNums);
 
             List<Segment> segments = new List<Segment>();
             List<int> timesForMovement = new List<int>();
@@ -84,6 +84,7 @@ namespace LoopData
                 int randValue = Random.Range(beginMovingTime, Mathf.FloorToInt(GameManager.resetTime));
                 timesForMovement.Add(randValue);
                 //Makes new Segments here!
+                Debug.Log(holdingFeature[i]);
                 Segment newSegment = new Segment(segmentPositions[i], i, randValue, timedYPos, holdingFeature[i]);
                 segments.Add(newSegment);
                 serializedSegments.Add(JsonUtility.ToJson(newSegment));

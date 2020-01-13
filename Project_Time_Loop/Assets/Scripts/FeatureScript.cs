@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class FeatureScript : MonoBehaviour
 {
-    public Feature feature;
+    public Feature feature = new Feature(Feature.element.None);
 
     bool isCarry = false;
     Transform player;
+    bool isInteracted = false;
 
 
     void Start()
@@ -35,6 +36,11 @@ public class FeatureScript : MonoBehaviour
         }
     }
 
+    public bool Check()
+    {
+        return isInteracted;
+    }
+
     public void Effect(Transform playerTransform)
     {
         switch (feature.type)
@@ -56,6 +62,6 @@ public class FeatureScript : MonoBehaviour
 
                 break;
         }
+        isInteracted = true;
     }
-
 }

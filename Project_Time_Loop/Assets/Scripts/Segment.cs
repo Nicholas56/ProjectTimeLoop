@@ -9,16 +9,17 @@ public class Segment
     public bool willMove = true;
     public int posAtTime;
     public List<float> timesForMoving;
-    //public bool featureHold;
-    public enum featureType { None, Light, Collectable, Unlockable, Portal, Carry};
-    public featureType type;
+    public Feature.element featureHold;
+    //public enum featureType { None, Light, Collectable, Unlockable, Portal, Carry};
+    //public featureType type;
 
-    public Segment(Vector3 newPos, int newID, int timedPos, List<float> listOfTimes, featureType chosenType)
+    public Segment(Vector3 newPos, int newID, int timedPos, List<float> listOfTimes, Feature.element feature)
     {
         pos = newPos;
         segmentID = newID;
         posAtTime = timedPos;
         timesForMoving = listOfTimes;
-        type = chosenType;
+        featureHold = feature;
+        //type = chosenType;
     }
 }

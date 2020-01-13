@@ -16,10 +16,12 @@ public class RoomMaker : MonoBehaviour
             newObject.transform.SetParent(transform);
             newObject.GetComponent<SegmentScript>().segmentData = segment;
             newObject.transform.Rotate(-90, 0, 0);
-            if (segment.type!=Segment.featureType.None)
+            Debug.Log("THis is: " + segment.featureHold);
+            if (segment.featureHold!=Feature.element.None)
             {
                 GameObject newFeature = Instantiate(featurePrefab, segment.pos + Vector3.up, Quaternion.identity);
                 newFeature.transform.SetParent(newObject.transform);
+                newFeature.GetComponent<FeatureScript>().feature.type = segment.featureHold;
                 switch (mode)
                 {
                     case Settings.gameMode.LightGame:
