@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 382213917405079482}
   - component: {fileID: 7766429287006554816}
   - component: {fileID: 6838107200799125960}
+  - component: {fileID: 8995349058184673735}
   m_Layer: 0
   m_Name: PortalPad
   m_TagString: Feature
@@ -147,6 +148,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 0.19}
   m_Center: {x: 0, y: 0, z: -0.86}
+--- !u!114 &8995349058184673735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3681336799498933673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3237860761f9fab42ba009442d763b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5347712484420641371
 GameObject:
   m_ObjectHideFlags: 0

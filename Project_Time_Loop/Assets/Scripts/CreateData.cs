@@ -48,11 +48,12 @@ namespace LoopData
 
                         break;
                     case Settings.gameMode.CollectionGame:
+                        if (numOfFeatures == specialFeatures[1]) { holdingFeature[randNum] = Feature.element.Unlock; break; }
                         holdingFeature[randNum] = Feature.element.Collect;
 
                         break;
                     case Settings.gameMode.Portal:
-                        if (numOfFeatures > 0 && numOfFeatures < specialFeatures[1])
+                        if (numOfFeatures > 0 && numOfFeatures < specialFeatures[2])
                         {
                             holdingFeature[randNum] = Feature.element.Basket;
                         }

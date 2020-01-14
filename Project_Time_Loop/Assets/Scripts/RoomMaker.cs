@@ -6,9 +6,10 @@ public class RoomMaker : MonoBehaviour
 {
     int tileNum;
 
-    public void MakeRoom(GameObject segmentPrefab, GameObject playerPrefab, List<Segment> listOfSegments, GameObject featurePrefab,GameObject wallPrefab, Settings.gameMode mode)
+    public void MakeRoom(GameObject segmentPrefab, GameObject playerPrefab, List<Segment> listOfSegments, Settings settings,GameObject wallPrefab)
     {
         Debug.Log(listOfSegments);
+        Settings currentSettings = settings;
         foreach(Segment segment in listOfSegments)
         {
             tileNum++;
@@ -19,18 +20,9 @@ public class RoomMaker : MonoBehaviour
             Debug.Log("THis is: " + segment.featureHold);
             if (segment.featureHold!=Feature.element.None)
             {
-                GameObject newFeature = Instantiate(featurePrefab, segment.pos + Vector3.up, Quaternion.identity);
+                GameObject newFeature = Instantiate(settings.Feature, segment.pos + Vector3.up, Quaternion.identity);
                 newFeature.transform.SetParent(newObject.transform);
                 newFeature.GetComponent<FeatureScript>().feature.type = segment.featureHold;
-                switch (mode)
-                {
-                    case Settings.gameMode.LightGame:
-
-                        break;
-                    case Settings.gameMode.CollectionGame:
-
-                        break;
-                }
             }
         }
 

@@ -18,7 +18,7 @@ MonoBehaviour:
   minHeight: -8
   maxHeight: 2
   beginMovingTime: 0
-  specialFeatures: 0100000003000000
+  specialFeatures: 010000000000000003000000
   lightFeaturePrefab: {fileID: 270402374718427484, guid: 79c6c32082304a84ebcf0e8a2a0b08c3,
     type: 3}
   portalFeaturePrefab: {fileID: 3681336799498933673, guid: 234a09fafc58bbf4aaa173ab4d651609,
@@ -27,7 +27,7 @@ MonoBehaviour:
     type: 3}
   collectFeaturePrefab: {fileID: 64059944826280048, guid: 0b763a16b10d8ea448c98d1171c11046,
     type: 3}
-  unlockFeaturePrefab: {fileID: 6533780278903771418, guid: efc4607a6017fa14bb5ca2a376f18403,
+  unlockFeaturePrefab: {fileID: 4552954687867079737, guid: 3aed96e8304c32b469b8c97e37564bb7,
     type: 3}
   wallPrefab: {fileID: 5697377291489303708, guid: b95429a9daa82614cbb20aa5f6bac4b0,
     type: 3}

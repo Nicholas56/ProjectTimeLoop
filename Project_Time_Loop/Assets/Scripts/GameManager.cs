@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     void CallRoomMaker()
     {
         Debug.Log("call room maker");
-        GetComponent<RoomMaker>().MakeRoom(segmentPrefab,playerPrefab,data.segments, featurePrefab,wallPrefab, data.settings.mode);
+        GetComponent<RoomMaker>().MakeRoom(segmentPrefab,playerPrefab,data.segments, data.settings,wallPrefab);
     }
 
     private void Update()
