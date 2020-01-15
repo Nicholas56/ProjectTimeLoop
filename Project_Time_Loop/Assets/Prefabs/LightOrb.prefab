@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8366531280226716449}
   - component: {fileID: 1418245860615782932}
   - component: {fileID: 3011897112353589814}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3272982242240835730}
   - component: {fileID: 4616351814460673262}
   - component: {fileID: 7852008262956460250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,9 +228,9 @@ GameObject:
   - component: {fileID: 4052460805000107}
   - component: {fileID: 774475515496889876}
   - component: {fileID: 7184332802762907737}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LightOrb
-  m_TagString: Untagged
+  m_TagString: Feature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 1649854664645326568}
   - component: {fileID: 6852094586206828578}
   - component: {fileID: 5094712446456134074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere002
   m_TagString: Untagged
   m_Icon: {fileID: 0}

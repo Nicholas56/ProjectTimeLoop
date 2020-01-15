@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 681171584401194538}
   - component: {fileID: -3169378725596053388}
   - component: {fileID: 7593230403206065253}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UnlockBox
-  m_TagString: Untagged
+  m_TagString: Feature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4832958645524181179}
   - component: {fileID: 470661381117755025}
   - component: {fileID: 4083386531890238346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 2872478907043648051}
   - component: {fileID: 2322405761544964576}
   - component: {fileID: 542206702106972053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box002
   m_TagString: Untagged
   m_Icon: {fileID: 0}

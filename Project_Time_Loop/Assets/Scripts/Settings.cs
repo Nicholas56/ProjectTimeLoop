@@ -25,48 +25,14 @@ public class Settings : ScriptableObject
     public int beginMovingTime = 0;
 
     public int[] specialFeatures;
-    int featureCall;
+    public int featureCall;
 
     public GameObject lightFeaturePrefab;
     public GameObject portalFeaturePrefab;
     public GameObject carryFeaturePrefab;
     public GameObject collectFeaturePrefab;
     public GameObject unlockFeaturePrefab;
-
-    public GameObject Feature
-    {
-        get
-        {
-            switch (mode)
-            {
-                case gameMode.LightGame:
-                    if (featureCall > numOfFeatures - specialFeatures[0])
-                    {
-                        return unlockFeaturePrefab;
-                    }
-                    featureCall++;
-                    return lightFeaturePrefab;
-
-                case gameMode.CollectionGame:
-                    if (featureCall > numOfFeatures - specialFeatures[1])
-                    {
-                        return unlockFeaturePrefab;
-                    }
-                    featureCall++;
-                    return collectFeaturePrefab;
-
-                case gameMode.Portal:
-                    if (featureCall > numOfFeatures - specialFeatures[2])
-                    {
-                        return portalFeaturePrefab;
-                    }
-                    featureCall++;
-                    return carryFeaturePrefab;
-
-            }
-            return null;
-        }
-    }
+       
 
     public GameObject wallPrefab;
 

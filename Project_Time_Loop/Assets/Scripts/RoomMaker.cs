@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomMaker : MonoBehaviour
 {
     int tileNum;
+    int featureNum;
 
     public void MakeRoom(GameObject segmentPrefab, GameObject playerPrefab, List<Segment> listOfSegments, Settings settings,GameObject wallPrefab)
     {
@@ -18,11 +19,38 @@ public class RoomMaker : MonoBehaviour
             newObject.GetComponent<SegmentScript>().segmentData = segment;
             newObject.transform.Rotate(-90, 0, 0);
             Debug.Log("THis is: " + segment.featureHold);
-            if (segment.featureHold!=Feature.element.None)
+            GameObject featureToAdd = null;
+            featureNum++;
+            switch (segment.featureHold)
             {
-                GameObject newFeature = Instantiate(settings.Feature, segment.pos + Vector3.up, Quaternion.identity);
+                case Feature.element.Light:
+                    featureToAdd = settings.lightFeaturePrefab;                    
+                    break;
+                case Feature.element.Unlock:
+                    featureToAdd = settings.unlockFeaturePrefab;
+                    break;
+                case Feature.element.Collect:
+                    featureToAdd = settings.collectFeaturePrefab;
+                    break;
+                case Feature.element.Carry:
+                    featureToAdd = settings.carryFeaturePrefab;
+                    if (featureNum == currentSettings.specialFeatures[2]-1) { featureNum = 0; }
+                    break;
+                case Feature.element.Basket:
+                    featureToAdd = settings.portalFeaturePrefab;
+                    if (featureNum == currentSettings.specialFeatures[2] - 1) { featureNum = 0; }
+                    break;
+                case Feature.element.None:
+                    featureToAdd = null;
+                    featureNum--;
+                    break;
+            }
+            if (featureToAdd != null)
+            {
+                GameObject newFeature = Instantiate(featureToAdd, segment.pos + Vector3.up, Quaternion.Euler(new Vector3(-90, 0, 0)));
                 newFeature.transform.SetParent(newObject.transform);
                 newFeature.GetComponent<FeatureScript>().feature.type = segment.featureHold;
+                newFeature.GetComponent<FeatureScript>().SetID(featureNum);
             }
         }
 

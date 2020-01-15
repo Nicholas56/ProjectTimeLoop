@@ -6,6 +6,8 @@ public class FeatureScript : MonoBehaviour
 {
     public Feature feature = new Feature(Feature.element.None);
 
+    public int featureID;
+
     bool isCarry = false;
     Transform player;
     bool isInteracted = false;
@@ -33,12 +35,33 @@ public class FeatureScript : MonoBehaviour
         if (isCarry)
         {
             transform.SetParent(player);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3);
+            for(int i = 0; i < hitColliders.Length; i++)
+            {
+                if (hitColliders[i].tag == "Portal")
+                {
+                    if (hitColliders[i].GetComponent<FeatureScript>().GetID() == featureID)
+                    {
+                        transform.transform.localScale += new Vector3(0.1F, .1f, .1f) * -3 * Time.deltaTime;
+                    }
+                }
+            }
         }
+        else transform.SetParent(null);
     }
 
     public bool Check()
     {
         return isInteracted;
+    }
+
+    public int GetID()
+    {
+        return featureID;
+    }
+    public void SetID(int newID)
+    {
+        featureID = newID;
     }
 
     public void Effect(Transform playerTransform)

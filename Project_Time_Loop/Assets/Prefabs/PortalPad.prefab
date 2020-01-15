@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4825286518620172863}
   - component: {fileID: 5732388714915620945}
   - component: {fileID: 3202724984557336166}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,9 +90,9 @@ GameObject:
   - component: {fileID: 7766429287006554816}
   - component: {fileID: 6838107200799125960}
   - component: {fileID: 8995349058184673735}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PortalPad
-  m_TagString: Feature
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 5704928446605322539}
   - component: {fileID: 770613006361290497}
   - component: {fileID: 3788369583553890842}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 6912930277604120086}
   - component: {fileID: 8826884568658233361}
   - component: {fileID: 5414675517181588431}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 5662312505327746838}
   - component: {fileID: 2745142397073989152}
   - component: {fileID: 837373672888690736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 8267425167454903101}
   - component: {fileID: 7867599195533562986}
   - component: {fileID: 2811363749842258074}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder003
   m_TagString: Untagged
   m_Icon: {fileID: 0}

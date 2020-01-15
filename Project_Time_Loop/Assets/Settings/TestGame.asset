@@ -12,20 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4c9846fd870f84db9c0c9cc257b6f2, type: 3}
   m_Name: TestGame
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 1
   roomSize: 9
   numOfFeatures: 10
   minHeight: -8
   maxHeight: 2
   beginMovingTime: 0
   specialFeatures: 010000000000000003000000
-  lightFeaturePrefab: {fileID: 270402374718427484, guid: 79c6c32082304a84ebcf0e8a2a0b08c3,
+  featureCall: 0
+  lightFeaturePrefab: {fileID: 3915101876515338680, guid: edd7ac9f6bb214947943a5315256c8bb,
     type: 3}
   portalFeaturePrefab: {fileID: 3681336799498933673, guid: 234a09fafc58bbf4aaa173ab4d651609,
     type: 3}
   carryFeaturePrefab: {fileID: 8144978427409219572, guid: 8ec94379b0a9321409b61206f9bfcc0f,
     type: 3}
-  collectFeaturePrefab: {fileID: 64059944826280048, guid: 0b763a16b10d8ea448c98d1171c11046,
+  collectFeaturePrefab: {fileID: 7771601724331167523, guid: 84872586e5ec76441bcad32afe992061,
     type: 3}
   unlockFeaturePrefab: {fileID: 4552954687867079737, guid: 3aed96e8304c32b469b8c97e37564bb7,
     type: 3}
