@@ -6,6 +6,8 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
+    public bool staticPlaced;
+
     GameData data;
     public GameObject segmentPrefab;
     public GameObject playerPrefab;
@@ -26,11 +28,14 @@ public class GameManager : MonoBehaviour
     {
         //Calls the reset time function after the given time
         Invoke("ResetTime", resetTime);
-        data = FindObjectOfType<GameData>();
-        Debug.Log("GameManager started");
+        if (!staticPlaced)
+        {
+            data = FindObjectOfType<GameData>();
+            Debug.Log("GameManager started");
 
-        gameObject.AddComponent<RoomMaker>();
-        CallRoomMaker();
+            gameObject.AddComponent<RoomMaker>();
+            CallRoomMaker();
+        }
     }
 
     void CallRoomMaker()
