@@ -8,6 +8,7 @@ TagManager:
   - Feature
   - Interact
   - Portal
+  - Message
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,6 @@ public class RoomMaker : MonoBehaviour
             newObject.transform.SetParent(transform);
             newObject.GetComponent<SegmentScript>().segmentData = segment;
             newObject.transform.Rotate(-90, 0, 0);
-            Debug.Log("THis is: " + segment.featureHold);
             GameObject featureToAdd = null;
             switch (segment.featureHold)
             {

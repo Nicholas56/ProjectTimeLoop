@@ -7,6 +7,9 @@ public class OptionScript : MonoBehaviour
     public GameObject pausePanel;
     public static bool isPaused;
 
+    public GameObject messagePanel;
+    public static bool showMessage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +35,7 @@ public class OptionScript : MonoBehaviour
             Time.timeScale = 1;
             pausePanel.SetActive(false);
         }
+        if (showMessage) { messagePanel.GetComponent<Animator>().SetBool("Message", true); }
+        else { messagePanel.GetComponent<Animator>().SetBool("Message", false); }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4c9846fd870f84db9c0c9cc257b6f2, type: 3}
   m_Name: TestGame
   m_EditorClassIdentifier: 
-  mode: 1
+  mode: 0
   roomSize: 9
   numOfFeatures: 10
   minHeight: -8

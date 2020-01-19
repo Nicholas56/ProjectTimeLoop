@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 681171584401194538}
-  - component: {fileID: -3169378725596053388}
   - component: {fileID: 7593230403206065253}
+  - component: {fileID: 4006685239986245974}
   m_Layer: 8
   m_Name: UnlockBox
   m_TagString: Feature
@@ -34,18 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3169378725596053388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4552954687867079737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3237860761f9fab42ba009442d763b3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &7593230403206065253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59,6 +47,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4006685239986245974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552954687867079737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a054adf3d331784e88bb7860e656ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  featureID: 0
 --- !u!1 &5048254058865966027
 GameObject:
   m_ObjectHideFlags: 0
