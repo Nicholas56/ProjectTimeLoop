@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4181761433675757521}
   - component: {fileID: 7580702444382849832}
   - component: {fileID: 303159779630633239}
-  - component: {fileID: -2569337925586297487}
   - component: {fileID: -4958893431395821442}
+  - component: {fileID: 6495320492760000555}
   m_Layer: 8
   m_Name: CarryBox
   m_TagString: Feature
@@ -143,18 +143,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &-2569337925586297487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8144978427409219572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3237860761f9fab42ba009442d763b3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &-4958893431395821442
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -168,3 +156,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.031496, y: 0.031496, z: 0.031496}
   m_Center: {x: 0, y: 0, z: 0.012700001}
+--- !u!114 &6495320492760000555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144978427409219572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8828372340e34574aa2c1471665976c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  featureID: 0
+  portalThresholdDistance: 2

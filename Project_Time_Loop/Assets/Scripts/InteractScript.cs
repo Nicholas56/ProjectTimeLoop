@@ -16,7 +16,7 @@ public class InteractScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                GetComponent<FeatureScript>().Effect(transform);
+                GetComponent<FeatureScript>().Effect();
             }
         }
     }

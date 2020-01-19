@@ -9,7 +9,7 @@ public class PlayerInteractScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             //Code from docs.unity3d.com/ScriptReference/Physics.Raycast.html
             RaycastHit hit;
@@ -19,7 +19,7 @@ public class PlayerInteractScript : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
-                hit.transform.GetComponent<FeatureScript>().Effect(transform);
+                hit.transform.GetComponent<FeatureScript>().Effect();
             }
             else
             {

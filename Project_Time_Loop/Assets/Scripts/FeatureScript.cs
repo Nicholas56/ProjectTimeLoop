@@ -4,87 +4,52 @@ using UnityEngine;
 
 public class FeatureScript : MonoBehaviour
 {
-    public Feature feature = new Feature(Feature.element.None);
-
     public int featureID;
 
-    bool isCarry = false;
-    Transform player;
     bool isInteracted = false;
 
+    GameObject[] mapSegments;
 
-    void Start()
+    public virtual void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Interact").transform;
-        switch (feature.type)
-        {
-            case Feature.element.Light:
-                gameObject.AddComponent<Light>();
-                break;
-            case Feature.element.Collect:
-                gameObject.GetComponent<BoxCollider>().isTrigger = true;
-                break;
-            case Feature.element.Unlock:
-                gameObject.SetActive(false);
-                break;
-        }
+        mapSegments = GameObject.FindGameObjectsWithTag("Segment");
+        FindNewParent();
     }
 
-    private void Update()
+    public void FindNewParent()
     {
-        if (isCarry)
+        GameObject closestSegment = null;
+        foreach (GameObject segment in mapSegments)
         {
-            transform.SetParent(player);
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3);
-            for(int i = 0; i < hitColliders.Length; i++)
-            {
-                if (hitColliders[i].tag == "Portal")
+            if (closestSegment == null) { closestSegment = segment; }
+            else
+            {//If the current segment is closer than the previous closest segment, then this segment becomes the closest one
+                if (Vector3.Distance(transform.position, closestSegment.transform.position) > Vector3.Distance(transform.position, segment.transform.position))
                 {
-                    if (hitColliders[i].GetComponent<FeatureScript>().GetID() == featureID)
-                    {
-                        transform.transform.localScale += new Vector3(0.1F, .1f, .1f) * -3 * Time.deltaTime;
-                    }
+                    closestSegment = segment;
                 }
             }
         }
-        else transform.SetParent(null);
+        transform.SetParent(closestSegment.transform);
     }
+
 
     public bool Check()
     {
         return isInteracted;
     }
 
-    public int GetID()
+    public int GetSegmentID()
     {
-        return featureID;
+        return transform.parent.GetComponent<SegmentScript>().segmentData.segmentID;
     }
     public void SetID(int newID)
     {
         featureID = newID;
     }
 
-    public void Effect(Transform playerTransform)
+    public virtual void Effect()
     {
-        switch (feature.type)
-        {
-            case Feature.element.Light:
-                GetComponent<Light>().color = Color.red;
-                GetComponent<Light>().intensity = 10f;
-                break;
-            case Feature.element.Collect:
-
-                break;
-            case Feature.element.Unlock:
-
-                break;
-            case Feature.element.Carry:
-                isCarry = !isCarry;
-                break;
-            case Feature.element.Basket:
-
-                break;
-        }
         isInteracted = true;
     }
 }

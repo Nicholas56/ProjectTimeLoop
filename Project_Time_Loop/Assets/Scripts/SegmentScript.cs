@@ -34,6 +34,7 @@ public class SegmentScript : MonoBehaviour
         }
     }
 
+    //Used by the editor script for this script
     public void RandomizeValues()
     {
         tileHeight = Random.Range(-10, 10);

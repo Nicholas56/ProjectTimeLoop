@@ -6,12 +6,9 @@ public class Segment
 {
     public Vector3 pos;
     public int segmentID;
-    public bool willMove = true;
     public int posAtTime;
     public List<float> timesForMoving;
     public Feature.element featureHold;
-    //public enum featureType { None, Light, Collectable, Unlockable, Portal, Carry};
-    //public featureType type;
 
     public Segment(Vector3 newPos, int newID, int timedPos, List<float> listOfTimes, Feature.element feature)
     {
@@ -20,6 +17,5 @@ public class Segment
         posAtTime = timedPos;
         timesForMoving = listOfTimes;
         featureHold = feature;
-        //type = chosenType;
     }
 }
