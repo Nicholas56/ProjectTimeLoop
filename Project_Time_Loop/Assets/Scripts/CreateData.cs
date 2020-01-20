@@ -85,7 +85,6 @@ namespace LoopData
                 int randValue = Random.Range(beginMovingTime, Mathf.FloorToInt(GameManager.resetTime));
                 timesForMovement.Add(randValue);
                 //Makes new Segments here!
-                Debug.Log(holdingFeature[i]);
                 Segment newSegment = new Segment(segmentPositions[i], i, randValue, timedYPos, holdingFeature[i]);
                 segments.Add(newSegment);
                 serializedSegments.Add(JsonUtility.ToJson(newSegment));

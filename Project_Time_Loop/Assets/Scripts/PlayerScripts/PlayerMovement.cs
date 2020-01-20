@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
         velocity = transform.TransformDirection(velocity);
 
-        if (Input.GetKey(KeyCode.LeftShift)&&charController.isGrounded)
+        if ((Input.GetKey(KeyCode.LeftShift)|| Input.GetKey(KeyCode.RightShift)) &&charController.isGrounded)
         {
             charController.Move(velocity * Time.deltaTime * 4);
         }

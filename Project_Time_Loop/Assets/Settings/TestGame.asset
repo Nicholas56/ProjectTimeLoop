@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestGame
   m_EditorClassIdentifier: 
   mode: 0
-  roomSize: 9
+  roomSize: 19
   numOfFeatures: 10
   minHeight: -8
   maxHeight: 2

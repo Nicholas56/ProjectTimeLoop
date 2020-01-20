@@ -9,6 +9,7 @@ TagManager:
   - Interact
   - Portal
   - Message
+  - Timer
   layers:
   - Default
   - TransparentFX

@@ -6,12 +6,18 @@ public class UnlockFeatureScript : FeatureScript
 {
     public override void Start()
     {
-        GetComponent<MeshRenderer>().enabled = false;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 
     public void Unlock()
     {
-        GetComponent<MeshRenderer>().enabled = true;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
+        }
     }
 
     public override void Effect()

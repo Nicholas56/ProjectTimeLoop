@@ -6,10 +6,13 @@ public class LightFeatureScript : FeatureScript
 {
     public override void Effect()
     {
-        base.Effect();
-        Light light = GetComponentInChildren<Light>();
-        light.color = Color.red;
-        light.intensity = 10f;
-        PuzzleMaster.AddToScore();
+        if (!isInteracted)
+        {
+            base.Effect();
+            Light light = GetComponentInChildren<Light>();
+            light.color = Color.red;
+            light.intensity = 10f;
+            PuzzleMaster.AddToScore();
+        }
     }
 }

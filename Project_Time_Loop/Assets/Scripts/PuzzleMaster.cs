@@ -76,6 +76,14 @@ public class PuzzleMaster : MonoBehaviour
         }
     }
 
+    public void FeatureUnlock()
+    {
+        foreach(UnlockFeatureScript box in unlockBox)
+        {
+            box.Unlock();
+        }
+    }
+
     public void MessageTextUpdate()
     {
         switch (settings.mode)
@@ -85,9 +93,11 @@ public class PuzzleMaster : MonoBehaviour
                 break;
             case Settings.gameMode.CollectionGame:
                 messageTxt.text = "Move over the tokens to collects them.\n Collect them all to complete the stage.\n Tokens collected: " + score + "/" + (settings.numOfFeatures - settings.specialFeatures[1]);
+                if(score== (settings.numOfFeatures - settings.specialFeatures[1])) { FeatureUnlock(); }
                 break;
             case Settings.gameMode.LightGame:
                 messageTxt.text = "Click on the lights to turn them on.\n Once they're all on, find and click on the hidden box to win.\n Lights turned on: " + score + "/" + (settings.numOfFeatures - settings.specialFeatures[0]);
+                if (score == (settings.numOfFeatures - settings.specialFeatures[0])) { FeatureUnlock(); Debug.Log("Limit reached"); }
                 break;
         }
     }

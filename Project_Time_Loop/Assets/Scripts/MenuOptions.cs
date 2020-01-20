@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MenuOptions : MonoBehaviour
 {
@@ -12,7 +11,6 @@ public class MenuOptions : MonoBehaviour
     public GameObject achievementPanel;
 
     public GameObject SavePanel;
-    public Settings settings;
 
     public static bool soundOn = true;
     public static int soundVolume = 70;
@@ -74,36 +72,10 @@ public class MenuOptions : MonoBehaviour
     public void MessageToggle()
     {
         OptionScript.showMessage = !OptionScript.showMessage;
-    }
+    }    
 
-    public void ChangeGameMode()
+    public void TimerToggle()
     {
-        int num = FindObjectOfType<Dropdown>().value;
-        settings.mode = (Settings.gameMode)num;
-    }
-
-    public void ChangeRoomSize()
-    {
-        //
-    }
-    public void ChangeNumberOfFeatures()
-    {
-        //
-    }
-    public void ChangeMinHeight()
-    {
-        //
-    }
-    public void ChangeMaxHeight()
-    {
-        //
-    }
-    public void ChangeBeginMovingTime()
-    {
-        //
-    }
-    public void ChangeSpecialFeatures()
-    {
-        //
+        OptionScript.showTimer = !OptionScript.showTimer;
     }
 }

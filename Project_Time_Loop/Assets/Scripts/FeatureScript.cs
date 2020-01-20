@@ -6,7 +6,7 @@ public class FeatureScript : MonoBehaviour
 {
     public int featureID;
 
-    bool isInteracted = false;
+    public bool isInteracted = false;
 
     GameObject[] mapSegments;
 

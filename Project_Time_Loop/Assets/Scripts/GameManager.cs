@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     //The timer will be used to tell the rest of the game what time it is
     public static float gameTimer = 0f;
+    public TMP_Text timerTxt;
 
     //The time before the scene reloads
     [Range(10f, 300f)]
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         //The game timer will increase with time
         gameTimer += Time.deltaTime;
-
+        timerTxt.text = gameTimer.ToString("n2");
     }
 
     public void ResetTime()
