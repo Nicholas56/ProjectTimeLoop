@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnlockFeatureScript : FeatureScript
 {
-    public override void Start()
+    protected override void Start()
     {
         for (int i = 0; i < transform.childCount; i++)
         {

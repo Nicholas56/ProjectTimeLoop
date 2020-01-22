@@ -44,13 +44,9 @@ public class MenuCustomizationScript : MonoBehaviour
     }
     public void ChangeNumberOfFeatures()
     {
-        if (featureNumSlider.value > roomSizeSlider.value * roomSizeSlider.value)
+        if (featureNumSlider.value > roomSizeSlider.value * roomSizeSlider.value || featureNumSlider.value < settings.numOfFeatures - specialFeatureSlider.value)
         {
-            settings.numOfFeatures = (int)(roomSizeSlider.value * roomSizeSlider.value);
-            featureNumSlider.value = settings.numOfFeatures;
-        }else if (featureNumSlider.value < specialFeatureSlider.value)
-        {
-            settings.numOfFeatures = (int)specialFeatureSlider.value;
+            settings.numOfFeatures = Mathf.Min((int)(roomSizeSlider.value * roomSizeSlider.value), settings.numOfFeatures - (int)specialFeatureSlider.value);
             featureNumSlider.value = settings.numOfFeatures;
         }
         else

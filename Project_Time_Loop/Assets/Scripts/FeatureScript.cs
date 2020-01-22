@@ -10,7 +10,7 @@ public class FeatureScript : MonoBehaviour
 
     GameObject[] mapSegments;
 
-    public virtual void Start()
+    protected virtual void Start()
     {
         mapSegments = GameObject.FindGameObjectsWithTag("Segment");
         FindNewParent();

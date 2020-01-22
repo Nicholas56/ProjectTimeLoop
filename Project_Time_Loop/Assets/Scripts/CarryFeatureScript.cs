@@ -14,7 +14,7 @@ public class CarryFeatureScript : FeatureScript
     public float portalThresholdDistance = 2;
 
     // Start is called before the first frame update
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
         mapPortals = GameObject.FindGameObjectsWithTag("Portal");
