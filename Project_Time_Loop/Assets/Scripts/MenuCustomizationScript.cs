@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+//Nicholas Easterby - EAS12337350
+//Handles the Customize screen options using Unity events
 public class MenuCustomizationScript : MonoBehaviour
 {
     public Settings settings;
@@ -31,6 +32,7 @@ public class MenuCustomizationScript : MonoBehaviour
 
     public void ChangeRoomSize()
     {
+        //Checks that the room isn't too small for the number of features
         if (roomSizeSlider.value * roomSizeSlider.value < featureNumSlider.value)
         {
             settings.roomSize = (int)Mathf.Ceil(Mathf.Sqrt(featureNumSlider.value));
@@ -44,6 +46,7 @@ public class MenuCustomizationScript : MonoBehaviour
     }
     public void ChangeNumberOfFeatures()
     {
+        //Checks that there aren't too many features for the map size
         if (featureNumSlider.value > roomSizeSlider.value * roomSizeSlider.value || featureNumSlider.value < settings.numOfFeatures - specialFeatureSlider.value)
         {
             settings.numOfFeatures = Mathf.Min((int)(roomSizeSlider.value * roomSizeSlider.value), settings.numOfFeatures - (int)specialFeatureSlider.value);
@@ -72,6 +75,7 @@ public class MenuCustomizationScript : MonoBehaviour
     }
     public void ChangeSpecialFeatures()
     {
+        //Depending on the special features required for the game mode, sets accordingly
         switch (settings.mode)
         {
             case Settings.gameMode.LightGame:
@@ -99,6 +103,7 @@ public class MenuCustomizationScript : MonoBehaviour
     }
     public void ChangeSettings()
     {
+        //Calls each function for total refresh
         ChangeRoomSize();
         ChangeNumberOfFeatures();
         ChangeMinHeight();

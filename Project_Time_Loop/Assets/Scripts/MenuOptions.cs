@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//Handles menu animations and option settings
 public class MenuOptions : MonoBehaviour
 {
     public GameObject controlsPanel;
@@ -47,6 +48,7 @@ public class MenuOptions : MonoBehaviour
 
     void SetFalse()
     {
+        //Resets all animations
         loadPanel.GetComponent<Animator>().SetBool("OpenLoad", false);
         optionsPanel.GetComponent<Animator>().SetBool("OpenOptions", false);
         controlsPanel.GetComponent<Animator>().SetBool("OpenControls", false);

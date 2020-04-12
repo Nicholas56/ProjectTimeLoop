@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using LoopData;
-
+//Nicholas Easterby - EAS12337350
+//This script controls the data being used and tells the scene how to act
 public class GameData : MonoBehaviour
 {
     public List<Segment> segments; 
@@ -20,10 +21,13 @@ public class GameData : MonoBehaviour
         if (FindObjectsOfType<GameData>().Length > 1) { Destroy(gameObject); }
         DontDestroyOnLoad(gameObject);
 
+        //If sava data is being loaded, finds the information and loads it ready to be used
         if (GameManager.SaveFileCheck(saveFileNum)&&GameManager.isLoad)
         {
+            //Empties previous data
             segments = null;
 
+            //Checks if save file or quick save data
             if (saveFileNum >= 0)
             {
                 string JSONSTring = File.ReadAllText(Application.persistentDataPath + "/playerSave.save" + saveFileNum);
@@ -41,6 +45,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
+            //If no save data, creates new randomized data for map
             List<string> serializedSegments = new List<string>();
 
             saveData = settings.MakeSave();
@@ -51,7 +56,7 @@ public class GameData : MonoBehaviour
             File.WriteAllText(Application.persistentDataPath + "/playerSave.save", JSONString);
         }
 
-        // GO through EACH STRING ANd DESERIALize iT.
+        // Using the data currently available, deserializes each string and loads the segment data
         List<Segment> unserializedSegments = new List<Segment>();
         for (int i = 0; i < saveData.sizeOfRoom * saveData.sizeOfRoom; i++)
         {
@@ -66,6 +71,7 @@ public class GameData : MonoBehaviour
 
 public struct SaveData
 {
+    //Custom save data format
     public List<string> savedSegments;
     public List<Vector3> savedSegmentPositions;
     public List<float> savedYPositions;

@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//Uses raycasting to interact with features
 public class PlayerInteractScript : MonoBehaviour
 {
     public LayerMask layer;

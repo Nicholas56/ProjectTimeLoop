@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Nicholas Easterby - EAS12337350
+//This script gives the player control over their own movement
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,12 +26,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Takes the two dimensional inputs to calculate direction to move in
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
         Vector3 direction = new Vector3(h, 0, v);
         Vector3 velocity = direction * moveSpeed;
 
+        //Checks to see if on the ground to allow jumping, or implement gravity
         if (charController.isGrounded)
         {
             if (Input.GetButtonDown("Jump"))
@@ -46,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
         velocity = transform.TransformDirection(velocity);
 
+        //Increases speed for Sprint function, using either shift input
         if ((Input.GetKey(KeyCode.LeftShift)|| Input.GetKey(KeyCode.RightShift)) &&charController.isGrounded)
         {
             charController.Move(velocity * Time.deltaTime * 4);

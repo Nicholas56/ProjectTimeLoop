@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+//Nicholas Easterby - EAS12337350
+//This script automatically loads the next scene, but allows other scripts to complete their functions at the same time
 
 public class BufferScript : MonoBehaviour
 {

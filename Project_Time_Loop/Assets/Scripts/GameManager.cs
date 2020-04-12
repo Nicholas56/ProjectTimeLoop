@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 using TMPro;
-
+//Nicholas Easterby - EAS12337350
+//Manages the game flow and provides functions to save data
 public class GameManager : MonoBehaviour
 {
     public bool staticPlaced;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Gives all the required data and objects over to the Room maker script
     void CallRoomMaker()
     {
         Debug.Log("call room maker");
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     public static bool SaveFileCheck(int fileNum)
     {
+        //Checks to see if save file exist, using the correct id
         if (fileNum >= 0)
         {
             if (File.Exists(Application.persistentDataPath + "/playerSave.save" + fileNum))
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
+        //Uses the current data to make save file, then serializes it and stores the string
         SaveData save = data.saveData;
         string JSONString = JsonUtility.ToJson(save);
         //Quicksave file
@@ -97,6 +101,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame(int saveFileNumber)
     {
+        //Uses an id to create separate save files to be loaded later
         SaveData save = data.saveData;
         string JSONString = JsonUtility.ToJson(save);
 
@@ -107,6 +112,7 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        //Implements a quick save, restores settings and return the player to the main menu
         SaveGame();
         Destroy(FindObjectOfType<GameData>().gameObject);
         Time.timeScale = 1f;

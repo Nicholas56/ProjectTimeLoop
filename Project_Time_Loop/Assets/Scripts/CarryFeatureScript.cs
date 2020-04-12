@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+//Nicholas Easterby - EAS12337350
+//This script inherits from the feature script. Implements functionality for features that can be carried
 public class CarryFeatureScript : FeatureScript
 {
     bool isCarry = false;
@@ -16,6 +17,7 @@ public class CarryFeatureScript : FeatureScript
     // Start is called before the first frame update
     protected override void Start()
     {
+        //Finds the portals and player
         base.Start();
         mapPortals = GameObject.FindGameObjectsWithTag("Portal");
         player = GameObject.FindGameObjectWithTag("Interact").transform;
@@ -37,21 +39,25 @@ public class CarryFeatureScript : FeatureScript
 
     public void DestroyFeature()
     {
+        //When the feature is deposited in the correct portal, this removes the object and updates the score
         Destroy(gameObject);
         PuzzleMaster.AddToScore();
     }
 
     public override void Effect()
     {
+        //The carry function is given to the inherited Effect function
         base.Effect();
         FindNewParent();
         isCarry = !isCarry;
+        //Sets the last parent, so that if the player drops this, the old parent can be set
         lastParentSegment = transform.parent.gameObject;
         if (isCarry)
         {
             transform.SetParent(player);
         }
         else transform.SetParent(lastParentSegment.transform);
+        //If deposited by a portal, the correct functions take place
         CheckForPortal();
     }
 }

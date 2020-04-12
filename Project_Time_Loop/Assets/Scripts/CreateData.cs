@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Nicholas Easterby - EAS12337350
+//This script creates and calculates all pertinent data when creating a new map
 
 namespace LoopData
 {
     public static class CreateData
     {
+        //Using limits provided, makes a list of random heights 
         public static List<float> CreateTimedPositionHeight(float minHeight, float maxHeight)
         {
             List<float> timedYPos = new List<float>();
@@ -18,6 +21,7 @@ namespace LoopData
             return timedYPos;
         }
 
+        //Using given room size, makes a list of positions for map tiles to be instantiated
         public static List<Vector3> CreateMap(int roomSize)
         {
             List<Vector3> segmentPositions = new List<Vector3>();
@@ -33,6 +37,7 @@ namespace LoopData
             return segmentPositions;
         }
 
+        //Randomly sets tiles to have features according to given instructions
         public static List<Feature.element> CreateFeature(int numOfFeatures, int roomSizeSqrd, Settings.gameMode mode, int[] specialFeatures)
         {
             List<Feature.element> holdingFeature = new List<Feature.element>();
@@ -40,6 +45,7 @@ namespace LoopData
             for (int i = 0; i < roomSizeSqrd; i++)
             {
                 int randNum = Random.Range(i, roomSizeSqrd);
+                //Depending on the game mode selected, different features will be added
                 switch (mode)
                 {
                     case Settings.gameMode.LightGame:
@@ -70,6 +76,7 @@ namespace LoopData
             return holdingFeature;
         }
 
+        //Returns map information in custom save data format
         public static SaveData CreateSaveData(int roomSize, int beginMovingTime, float minHeight, float maxHeight, int numOfFeatures, Settings.gameMode mode, int[] featureNums)
         {
             List<Vector3> segmentPositions = CreateMap(roomSize);

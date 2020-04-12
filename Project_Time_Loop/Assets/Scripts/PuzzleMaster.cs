@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+//Nicholas Easterby - EAS12337350
+//Handles the puzzles and keeps track of the score
 public class PuzzleMaster : MonoBehaviour
 {
     Settings settings;
@@ -15,7 +16,7 @@ public class PuzzleMaster : MonoBehaviour
 
     [SerializeField] static int score;
 
-    // Start is called before the first frame update
+    //Called at the beginning of each round, finds the puzzles parts and sets them up as needed
     void Start()
     {
         settings = FindObjectOfType<GameData>().settings;
@@ -66,6 +67,7 @@ public class PuzzleMaster : MonoBehaviour
             }
         }
 
+        //Sets up corresponding ids in each feature for each portal
         for(int n = 0;n<portals.Length;n++)
         {
             portals[n].GetComponent<FeatureScript>().SetID(n);
@@ -86,6 +88,7 @@ public class PuzzleMaster : MonoBehaviour
 
     public void MessageTextUpdate()
     {
+        //Depending on the game mode, uses the data from settings to show current player progress
         switch (settings.mode)
         {
             case Settings.gameMode.Portal:

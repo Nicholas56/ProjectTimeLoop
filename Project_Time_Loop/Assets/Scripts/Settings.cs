@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using LoopData;
-
+//Nicholas Easterby - EAS12337350
+//A scriptable object so that settings can be set up in the editor
 [CreateAssetMenu()]
 public class Settings : ScriptableObject
 {
@@ -36,6 +37,7 @@ public class Settings : ScriptableObject
 
     public GameObject wallPrefab;
 
+    //Returns save data containing data from this script
     public SaveData MakeSave()
     {
         SaveData newSave = CreateData.CreateSaveData(roomSize, beginMovingTime, minHeight, maxHeight, numOfFeatures, mode, specialFeatures);

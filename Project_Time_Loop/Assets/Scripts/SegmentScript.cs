@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//The behaviour for a segment object
 public class SegmentScript : MonoBehaviour
 {
     public bool staticPlaced;
@@ -23,6 +24,7 @@ public class SegmentScript : MonoBehaviour
 
     private void Start()
     {
+        //Allows for segment to be placed by means other than Room Maker
         if (staticPlaced)
         {
             heightMove = tileHeight;
@@ -43,6 +45,7 @@ public class SegmentScript : MonoBehaviour
 
     private void Update()
     {
+        //Changes the floor material based on proximity to move time
         if (Mathf.FloorToInt(GameManager.gameTimer)>timeToMove-timeBeforeMove&& Mathf.FloorToInt(GameManager.gameTimer) < timeToMove)
         {
             gameObject.GetComponent<Renderer>().material = segmentMaterials[1];

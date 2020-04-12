@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//Provides information structure for a segment object
 public class Segment
 {
     public Vector3 pos;
@@ -10,6 +11,7 @@ public class Segment
     public List<float> timesForMoving;
     public Feature.element featureHold;
 
+    //Constructor for segment
     public Segment(Vector3 newPos, int newID, int timedPos, List<float> listOfTimes, Feature.element feature)
     {
         pos = newPos;

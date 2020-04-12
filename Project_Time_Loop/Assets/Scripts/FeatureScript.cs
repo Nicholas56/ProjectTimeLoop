@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//Provides base functions for all features in the game
 public class FeatureScript : MonoBehaviour
 {
     public int featureID;
@@ -12,10 +13,12 @@ public class FeatureScript : MonoBehaviour
 
     protected virtual void Start()
     {
+        //Finds all map tiles
         mapSegments = GameObject.FindGameObjectsWithTag("Segment");
         FindNewParent();
     }
 
+    //Uses map info to find the closest tile to set as the parent of this feature
     public void FindNewParent()
     {
         GameObject closestSegment = null;
@@ -48,6 +51,7 @@ public class FeatureScript : MonoBehaviour
         featureID = newID;
     }
 
+    //Virtual function inherited by other scripts, marks the feature as interacted
     public virtual void Effect()
     {
         isInteracted = true;
