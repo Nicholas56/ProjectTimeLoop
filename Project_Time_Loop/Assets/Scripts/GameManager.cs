@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         Invoke("ReloadScene", 0.5f);
     }
 
-    void ReloadScene() { SceneManager.LoadScene(0); }
+    void ReloadScene() { SceneManager.LoadScene(1); }
 
 
     public static bool SaveFileCheck(int fileNum)
